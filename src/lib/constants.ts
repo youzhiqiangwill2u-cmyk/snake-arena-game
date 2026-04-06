@@ -51,19 +51,20 @@ export const DIRECTION_MAP: Record<string, { x: number; y: number }> = {
 
 /** 颜色主题 */
 export const THEME = {
-  background: '#0a0a0f',
-  gridLine: 'rgba(255, 255, 255, 0.03)',
-  snakeHead: '#00ff88',
-  snakeBody: '#00cc6a',
-  snakeTail: '#009950',
-  food: '#ff6b6b',
-  foodGlow: 'rgba(255, 107, 107, 0.4)',
-  neonGreen: '#00ff88',
-  neonPurple: '#a855f7',
+  background: '#050508',
+  gridLine: 'rgba(0, 255, 157, 0.05)',
+  snakeHead: '#00FF9D',
+  snakeBody: 'rgba(0, 255, 157, 0.8)',
+  snakeTail: 'rgba(0, 255, 157, 0.4)',
+  food: '#BF7AFA',
+  foodGlow: 'rgba(191, 122, 250, 0.4)',
+  neonGreen: '#00FF9D',
+  neonPurple: '#BF7AFA',
   neonBlue: '#3b82f6',
-  textPrimary: '#e0e0e0',
-  textSecondary: '#888888',
+  textPrimary: '#FFFFFF',
+  textSecondary: 'rgba(255, 255, 255, 0.6)',
 } as const;
+
 
 /** 
  * 测试模式开关 

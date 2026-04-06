@@ -20,29 +20,30 @@ export default function GameOverModal({
   return (
     <div className="modal-overlay" onClick={onRestart}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-icon">💀</div>
-        <h2 className="modal-title">游戏结束</h2>
+        <div className="modal-icon">▲</div>
+        <h2 className="modal-title">CRITICAL FAILURE</h2>
 
         <div className="modal-stats">
           <div className="modal-stat">
             <span className="modal-stat-value">{score}</span>
-            <span className="modal-stat-label">最终得分</span>
+            <span className="modal-stat-label">FINAL SCORE</span>
           </div>
           <div className="modal-stat">
             <span className="modal-stat-value">{snakeLength}</span>
-            <span className="modal-stat-label">蛇身长度</span>
+            <span className="modal-stat-label">MAX LENGTH</span>
           </div>
         </div>
 
-        <div className="modal-save-status">
-          {saving && <span className="save-indicator">⏳ 正在保存...</span>}
-          {saved && <span className="save-indicator save-indicator--done">✅ 成绩已保存</span>}
+        <div className="modal-save-status" style={{ marginBottom: '1.5rem', fontSize: '0.75rem' }}>
+          {saving && <span className="save-indicator" style={{ color: 'var(--accent-secondary)' }}>UPLOADING RECORD...</span>}
+          {saved && <span className="save-indicator save-indicator--done" style={{ color: 'var(--accent-primary)' }}>DATA SYNCHRONIZED</span>}
         </div>
 
-        <button className="btn btn--primary btn--lg" onClick={onRestart}>
-          🔄 重新开始
+        <button className="btn btn--primary" style={{ width: '100%', border: '1px solid var(--accent-danger)', background: 'transparent', color: 'var(--accent-danger)' }} onClick={onRestart}>
+          RE-INITIALIZE
         </button>
       </div>
     </div>
   );
 }
+

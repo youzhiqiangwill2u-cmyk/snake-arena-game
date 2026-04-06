@@ -153,11 +153,11 @@ export default function GameCanvas({ gameState }: GameCanvasProps) {
 
     // 游戏状态覆盖层
     if (gameState.status === 'IDLE') {
-      drawOverlay(ctx, '按方向键开始游戏', 'WASD 或 ↑↓←→');
+      drawOverlay(ctx, 'INITIALIZE ENTRANCE', 'PRESS ARROW TO START');
     } else if (gameState.status === 'PAUSED') {
-      drawOverlay(ctx, '已暂停', '按空格键继续');
+      drawOverlay(ctx, 'SYSTEM SUSPENDED', 'PRESS SPACE TO RESUME');
     } else if (gameState.status === 'GAME_OVER') {
-      drawOverlay(ctx, '游戏结束', `得分: ${gameState.score}`);
+      drawOverlay(ctx, 'CRITICAL FAILURE', `SCORE: ${gameState.score}`);
     }
 
     // 持续动画
@@ -170,23 +170,25 @@ export default function GameCanvas({ gameState }: GameCanvasProps) {
    * 绘制半透明覆盖层 + 居中文字
    */
   function drawOverlay(ctx: CanvasRenderingContext2D, title: string, subtitle: string) {
-    ctx.fillStyle = 'rgba(10, 10, 15, 0.75)';
+    ctx.fillStyle = 'rgba(5, 5, 8, 0.85)';
     ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
 
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
-    ctx.font = 'bold 24px "Inter", sans-serif';
+    ctx.font = '800 24px "Space Grotesk", sans-serif';
     ctx.fillStyle = THEME.neonGreen;
     ctx.shadowColor = THEME.neonGreen;
-    ctx.shadowBlur = 15;
+    ctx.shadowBlur = 20;
     ctx.fillText(title, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 - 16);
     ctx.shadowBlur = 0;
 
-    ctx.font = '14px "Inter", sans-serif';
+    ctx.font = '500 12px "Space Grotesk", sans-serif';
     ctx.fillStyle = THEME.textSecondary;
-    ctx.fillText(subtitle, CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 16);
+    ctx.letterSpacing = '2px';
+    ctx.fillText(subtitle.toUpperCase(), CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2 + 16);
   }
+
 
   useEffect(() => {
     animFrameRef.current = requestAnimationFrame(draw);
